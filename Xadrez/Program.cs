@@ -6,13 +6,19 @@ namespace Xadrez {
 
         static void Main(string[] args) {
 
-            Tabuleiro tab = new(8, 8);
+            try {
+                Tabuleiro tab = new(8, 8);
 
-            tab.ColocarPeca(new Torre(Cor.Preta, tab ), new Posicao(4, 6));
+                tab.ColocarPeca(new Torre(Cor.Preta, tab), new Posicao(4, 8));
 
-            Tela.ImprimirTabuleiro(tab);
+                Tela.ImprimirTabuleiro(tab);
 
-            Console.ReadLine();
+                Console.ReadLine();
+            }catch(TabuleiroException e) {
+
+                Console.WriteLine(e.Message);
+            }
+
               
         }
     }
