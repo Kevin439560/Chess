@@ -5,17 +5,24 @@ namespace Xadrez {
 
         public static void ImprimirTabuleiro(Tabuleiro tabuleiro) {
 
+            Console.Write("  ");
+            for(int i = 0; i < tabuleiro.NumLinhas; i++) {
+
+                Console.Write(i + " ");
+            }
+            Console.WriteLine();
             for (int i = 0; i < tabuleiro.NumLinhas; i++) {
 
+                Console.Write(i);
                 for (int j = 0; j < tabuleiro.NumColunas; j++) {
 
-                    if (tabuleiro.peca(i, j) == null) {
+                    if (tabuleiro.Peca(i, j) == null) {
 
-                        Console.Write("- ");
+                        Console.Write(" -");
 
                     } else {
 
-                        Console.Write(tabuleiro.peca(i, j) + " ");
+                        Console.Write(" " + tabuleiro.Peca(i, j));
 
                     }
 
