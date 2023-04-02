@@ -5,10 +5,12 @@ namespace Xadrez {
 
         static void Main(string[] args) {
 
-            Tabuleiro tab = new(9, 0);
+            Tabuleiro tab = new(8, 8);
+
+            Tela.ImprimirTabuleiro(tab);
 
             Console.ReadLine();
-
+             
         }
     }
 }

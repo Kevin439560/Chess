@@ -18,5 +18,12 @@ namespace tabuleiro {
             Pecas = new Peca[NumLinhas, NumColunas];
 
         }
+
+        public Peca peca(int linha, int coluna) {
+
+            return Pecas[linha, coluna];
+        
+        }
     }
+
 }
