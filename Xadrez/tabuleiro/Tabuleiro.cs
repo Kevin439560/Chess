@@ -41,9 +41,9 @@ namespace tabuleiro {
 
         public void ColocarPeca(Peca peca, Posicao posicao) {
 
-            ValidarPosicao(posicao);
-
-            Console.WriteLine( "passou da verificacao");
+            if(ExistePeca(posicao)) {
+                throw new TabuleiroException("Ja existe uma peca nesta posicao!");
+            }
             Pecas[posicao.Linha, posicao.Coluna] = peca;
 
             peca.Posicao = posicao;

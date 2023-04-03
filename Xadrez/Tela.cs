@@ -8,7 +8,7 @@ namespace Xadrez {
             Console.Write("  ");
             for(int i = 0; i < tabuleiro.NumLinhas; i++) {
 
-                Console.Write(i + " ");
+                Console.Write((PosicaoXadrez)i + " ");
             }
             Console.WriteLine();
             for (int i = 0; i < tabuleiro.NumLinhas; i++) {
