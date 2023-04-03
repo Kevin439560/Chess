@@ -1,4 +1,4 @@
-﻿namespace  tabuleiro {
+﻿namespace pecas {
     enum PosicaoXadrez : int {
 
         a = 0,

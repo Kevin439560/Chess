@@ -1,4 +1,5 @@
-﻿using tabuleiro;
+﻿using pecas;
+using tabuleiro;
 
 namespace Xadrez {
     class Tela {
@@ -6,28 +7,45 @@ namespace Xadrez {
         public static void ImprimirTabuleiro(Tabuleiro tabuleiro) {
 
             Console.Write("  ");
-            for(int i = 0; i < tabuleiro.NumLinhas; i++) {
+            for (int i = 1; i <= tabuleiro.NumLinhas; i++) {
 
-                Console.Write((PosicaoXadrez)i + " ");
+                Console.Write((PosicaoXadrez)i - 1 + " ");
             }
             Console.WriteLine();
-            for (int i = 0; i < tabuleiro.NumLinhas; i++) {
+            for (int i = 1; i <= tabuleiro.NumLinhas; i++) {
 
                 Console.Write(i);
-                for (int j = 0; j < tabuleiro.NumColunas; j++) {
+                for (int j = 1; j <= tabuleiro.NumColunas; j++) {
 
-                    if (tabuleiro.Peca(i, j) == null) {
+                    if (tabuleiro.Peca(i - 1, j - 1) == null) {
 
                         Console.Write(" -");
 
                     } else {
 
-                        Console.Write(" " + tabuleiro.Peca(i, j));
-
+                        ImprimirPeca(tabuleiro.Peca(i - 1, j - 1));
+                         
                     }
 
                 }
                 Console.WriteLine();
+            }
+
+            static void ImprimirPeca(Peca peca) {
+
+                if (peca.Cor == Cor.Branca) {
+
+                    Console.Write(" " + peca);
+                } else {
+                    ConsoleColor aux = Console.ForegroundColor;
+
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+
+                    Console.Write(" " + peca);
+
+                    Console.ForegroundColor = aux;
+
+                }
             }
         }
     }
