@@ -5,28 +5,28 @@ namespace Xadrez {
     class Program {
 
         static void Main(string[] args) {
-
+            
             try {
-                Tabuleiro tab = new(8, 8);
 
-                tab.ColocarPeca(new Torre(Cor.Branca, tab), new Posicao(4, 0));
-                tab.ColocarPeca(new Cavalo(Cor.Preta, tab), new Posicao(2, 6));
-                tab.ColocarPeca(new Rei(Cor.Branca, tab), new Posicao(3, 7));
-                tab.ColocarPeca(new Torre(Cor.Preta, tab), new Posicao(1, 5));
+                PartidaDeXadrez partida = new PartidaDeXadrez();
 
-                Tela.ImprimirTabuleiro(tab);
+                Tela.ImprimirTabuleiro(partida.Tab);
 
                 Console.ReadLine();
             } catch (TabuleiroException e) {
 
                 Console.WriteLine(e.Message);
             }
+            
+            /*
 
-            //PosicaoXadrez z = Enum.Parse<PosicaoXadrez>(Console.ReadLine());
+            string[] vetro = Console.ReadLine().Split(" ");
 
-            //Console.WriteLine(z);
+            PosicaoXadrez z = Enum.Parse<PosicaoXadrez>(vetro[0]);
 
+            Console.WriteLine((int)z);
 
+            */
         }
     }
 }
