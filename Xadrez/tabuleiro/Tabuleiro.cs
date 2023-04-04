@@ -54,6 +54,7 @@ namespace tabuleiro {
 
             if (Peca(pos) == null) {
 
+                Console.WriteLine("passou aqui");
                 return null;
 
             }

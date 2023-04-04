@@ -8,11 +8,30 @@ namespace Xadrez {
             
             try {
 
+                
                 PartidaDeXadrez partida = new PartidaDeXadrez();
 
-                Tela.ImprimirTabuleiro(partida.Tab);
+                while (!partida.Terminada) {
 
-                Console.ReadLine();
+                    Console.Clear();
+
+                    Tela.ImprimirTabuleiro(partida.Tab);
+
+                    Console.Write("Escolha uma Peca digitando sua posicao(letra/numero): ");
+
+                    string posicao = Console.ReadLine();
+
+                    Posicao origem = Tela.LerPosicaoXadrez(posicao);
+
+                    Console.Write("Agora escolha um destino digitando sua posicao(letra/numero): ");
+
+                    posicao = Console.ReadLine();
+
+                    Posicao destino = Tela.LerPosicaoXadrez(posicao);
+
+                    partida.ExecutaMovimento(origem, destino);
+                }
+
             } catch (TabuleiroException e) {
 
                 Console.WriteLine(e.Message);
