@@ -23,6 +23,12 @@ namespace Xadrez {
 
                     Posicao origem = Tela.LerPosicaoXadrez(posicao);
 
+                    bool[,] posicoesPossiveis = partida.Tab.Peca(origem).MovimentosPossiveis();
+
+                    Console.Clear();
+
+                    Tela.ImprimirTabuleiro(partida.Tab, posicoesPossiveis);
+
                     Console.Write("Agora escolha um destino digitando sua posicao(letra/numero): ");
 
                     posicao = Console.ReadLine();

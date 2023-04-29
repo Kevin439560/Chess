@@ -47,12 +47,13 @@ namespace pecas {
             Tab.ColocarPeca(new Bispo(Cor.Preta, Tab), new Posicao((int)PosicaoXadrez.f, 0));
             Tab.ColocarPeca(new Rei(Cor.Preta, Tab), new Posicao((int)PosicaoXadrez.d, 0));
             Tab.ColocarPeca(new Rainha(Cor.Preta, Tab), new Posicao((int)PosicaoXadrez.e, 0));
+            /*
             for(int i = 0; i < 8; i++) {
 
                 Tab.ColocarPeca(new Peao(Cor.Preta, Tab), new Posicao(i, 1));
                 Tab.ColocarPeca(new Peao(Cor.Branca, Tab), new Posicao(i, 6));
             }
-
+            */
             Tab.ColocarPeca(new Torre(Cor.Branca, Tab), new Posicao((int)PosicaoXadrez.a, 7));
             Tab.ColocarPeca(new Torre(Cor.Branca, Tab), new Posicao((int)PosicaoXadrez.h, 7));
             Tab.ColocarPeca(new Cavalo(Cor.Branca, Tab), new Posicao((int)PosicaoXadrez.b, 7));

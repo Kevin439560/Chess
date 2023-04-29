@@ -1,4 +1,6 @@
-﻿namespace tabuleiro {
+﻿using System.Runtime.CompilerServices;
+
+namespace tabuleiro {
     class Posicao {
 
         public int Linha { get; set; }
@@ -10,6 +12,12 @@
             Linha = linha;
 
             Coluna = coluna;
+
+        }
+
+        public void DefinirValores(int coluna, int linha) {
+            Coluna = coluna;
+            Linha = linha;
 
         }
 
