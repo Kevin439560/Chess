@@ -1,14 +1,10 @@
-﻿using tabuleiro;
-
+﻿
+using tabuleiro;
 
 namespace pecas {
-    class Rei : Peca{
-        public Rei(Cor cor, Tabuleiro Tabuleiro): base(cor, Tabuleiro) {
+    class Horse : Peca {
+        public Horse(Cor cor, Tabuleiro Tabuleiro) : base(cor, Tabuleiro) {
 
-        }
-          
-        public override string ToString() {
-            return "R";
         }
 
         private bool PodeMover(Posicao pos) {
@@ -20,51 +16,62 @@ namespace pecas {
         public override bool[,] MovimentosPossiveis() {
             bool[,] mat = new bool[Tabuleiro.NumLinhas, Tabuleiro.NumColunas];
 
-            Posicao pos = new(0,0);
+            Posicao pos = new(0, 0);
 
-            //acima
-            pos.DefinirValores(Posicao.Coluna, Posicao.Linha - 1);
-            if(Tabuleiro.PosicaoValida(pos) && PodeMover(pos)) {
-                mat[pos.Linha, pos.Coluna] = true;
-            }
-            //ne
-            pos.DefinirValores(Posicao.Coluna + 1, Posicao.Linha - 1);
-            if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos)) {
-                mat[pos.Linha, pos.Coluna] = true;
-            }
-            //no
-            pos.DefinirValores(Posicao.Coluna - 1, Posicao.Linha - 1);
-            if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos)) {
-                mat[pos.Linha, pos.Coluna] = true;
-            }
-            //direita
-            pos.DefinirValores(Posicao.Coluna + 1, Posicao.Linha);
-            if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos)) {
-                mat[pos.Linha, pos.Coluna] = true;
-            }
-            //esquerda
-            pos.DefinirValores(Posicao.Coluna - 1, Posicao.Linha);
-            if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos)) {
-                mat[pos.Linha, pos.Coluna] = true;
-            }
-            //baixo
-            pos.DefinirValores(Posicao.Coluna, Posicao.Linha + 1);
-            if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos)) {
-                mat[pos.Linha, pos.Coluna] = true;
-            }   
-            //S0
-            pos.DefinirValores(Posicao.Coluna - 1, Posicao.Linha + 1);
-            if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos)) {
-                mat[pos.Linha, pos.Coluna] = true;
-            }
-            //SE
-            pos.DefinirValores(Posicao.Coluna + 1, Posicao.Linha + 1);
-            if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos)) {
-                mat[pos.Linha, pos.Coluna] = true;
-            }
-            
 
+            //acima esquerda acima
+            pos.DefinirValores(Posicao.Coluna - 1, Posicao.Linha - 2);
+            if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos)) {
+                mat[pos.Linha, pos.Coluna] = true;
+            }
+
+            //acima esquerda abaixo
+            pos.DefinirValores(Posicao.Coluna - 2, Posicao.Linha - 1);
+            if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos)) {
+                mat[pos.Linha, pos.Coluna] = true;
+            }
+
+            //acima direita acima
+            pos.DefinirValores(Posicao.Coluna + 1, Posicao.Linha - 2);
+            if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos)) {
+                mat[pos.Linha, pos.Coluna] = true;
+            }
+
+            //acima direita abaixo
+            pos.DefinirValores(Posicao.Coluna + 2, Posicao.Linha - 1);
+            if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos)) {
+                mat[pos.Linha, pos.Coluna] = true;
+            }
+
+            //abaixo esquerda acima
+            pos.DefinirValores(Posicao.Coluna - 2, Posicao.Linha + 1);
+            if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos)) {
+                mat[pos.Linha, pos.Coluna] = true;
+            }
+
+            //abaixo esquerda abaixo
+            pos.DefinirValores(Posicao.Coluna - 1, Posicao.Linha + 2);
+            if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos)) {
+                mat[pos.Linha, pos.Coluna] = true;
+            }
+
+            //abaixo direita acima
+            pos.DefinirValores(Posicao.Coluna + 2, Posicao.Linha + 1);
+            if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos)) {
+                mat[pos.Linha, pos.Coluna] = true;
+            }
+
+            //abaixo direita abaixo
+            pos.DefinirValores(Posicao.Coluna + 1, Posicao.Linha + 2);
+            if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos)) {
+                mat[pos.Linha, pos.Coluna] = true;
+            }
+            mat[2, 2] = true;
             return mat;
+        }
+
+        public override string ToString() {
+            return "C";
         }
     }
 }

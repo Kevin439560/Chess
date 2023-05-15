@@ -65,6 +65,7 @@ namespace Xadrez {
 
 
 
+
         public static Posicao LerPosicaoXadrez(string posicao) {
             posicao = posicao.ToLower();
 
@@ -98,7 +99,7 @@ namespace Xadrez {
                     Console.ForegroundColor = aux;
 
                 }
-                
+
             }
         }
     }

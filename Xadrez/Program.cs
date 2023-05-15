@@ -5,44 +5,67 @@ namespace Xadrez {
     class Program {
 
         static void Main(string[] args) {
-            
+
             try {
 
-                
+
                 PartidaDeXadrez partida = new PartidaDeXadrez();
 
                 while (!partida.Terminada) {
+                    try {
 
-                    Console.Clear();
 
-                    Tela.ImprimirTabuleiro(partida.Tab);
+                        Console.Clear();
 
-                    Console.Write("Escolha uma Peca digitando sua posicao(letra/numero): ");
+                        Tela.ImprimirTabuleiro(partida.Tab);
 
-                    string posicao = Console.ReadLine();
+                        Console.WriteLine("\nTurno: " + partida.Turno);
 
-                    Posicao origem = Tela.LerPosicaoXadrez(posicao);
+                        Console.WriteLine("Cor Atual: " + partida.JogadorAtual);
 
-                    bool[,] posicoesPossiveis = partida.Tab.Peca(origem).MovimentosPossiveis();
+                        Console.Write("Escolha uma Peca digitando sua posicao(letra/numero): ");
 
-                    Console.Clear();
+                        string posicao = Console.ReadLine();
 
-                    Tela.ImprimirTabuleiro(partida.Tab, posicoesPossiveis);
+                        partida.ValidarLetra(posicao);
 
-                    Console.Write("Agora escolha um destino digitando sua posicao(letra/numero): ");
+                        Posicao origem = Tela.LerPosicaoXadrez(posicao);
 
-                    posicao = Console.ReadLine();
+                        partida.ValidarPosOrigem(origem);
 
-                    Posicao destino = Tela.LerPosicaoXadrez(posicao);
+                        bool[,] posicoesPossiveis = partida.Tab.Peca(origem).MovimentosPossiveis();
 
-                    partida.ExecutaMovimento(origem, destino);
+                        Console.Clear();
+
+                        Tela.ImprimirTabuleiro(partida.Tab, posicoesPossiveis);
+
+                        Console.Write("Agora escolha um destino digitando sua posicao(letra/numero): ");
+
+                        posicao = Console.ReadLine();
+
+                        partida.ValidarLetra(posicao);
+
+                        Posicao destino = Tela.LerPosicaoXadrez(posicao);
+
+                        partida.ValidarPosDestino(origem, destino);
+
+                        partida.RealizaJogada(origem, destino);
+
+                    } catch (TabuleiroException e){
+
+                        Console.WriteLine(e.Message);
+
+                        Console.ReadLine();
+
+                    }
+
                 }
 
             } catch (TabuleiroException e) {
 
                 Console.WriteLine(e.Message);
             }
-            
+
             /*
 
             string[] vetro = Console.ReadLine().Split(" ");
