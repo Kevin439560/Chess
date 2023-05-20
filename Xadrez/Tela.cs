@@ -38,6 +38,12 @@ namespace Xadrez {
             Console.WriteLine("\nTurno: " + partida.Turno);
 
             Console.WriteLine("Cor Atual: " + partida.JogadorAtual);
+
+            if (partida.xeque) {
+
+                Console.WriteLine("XEQUE!");
+
+            }
         }
 
         public static void ImprimirPecasCapturadas(PartidaDeXadrez partida) {
