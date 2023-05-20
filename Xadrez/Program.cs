@@ -17,11 +17,7 @@ namespace Xadrez {
 
                         Console.Clear();
 
-                        Tela.ImprimirTabuleiro(partida.Tab);
-
-                        Console.WriteLine("\nTurno: " + partida.Turno);
-
-                        Console.WriteLine("Cor Atual: " + partida.JogadorAtual);
+                        Tela.ImprimirPartida(partida);
 
                         Console.Write("Escolha uma Peca digitando sua posicao(letra/numero): ");
 

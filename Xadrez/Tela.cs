@@ -1,5 +1,6 @@
 ﻿using pecas;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using tabuleiro;
 
 namespace Xadrez {
@@ -23,6 +24,48 @@ namespace Xadrez {
                 }
                 Console.WriteLine();
             }
+
+        }
+
+        public static void ImprimirPartida(PartidaDeXadrez partida){
+
+            ImprimirTabuleiro(partida.Tab);
+
+            Console.WriteLine("\n");
+
+            ImprimirPecasCapturadas(partida); 
+
+            Console.WriteLine("\nTurno: " + partida.Turno);
+
+            Console.WriteLine("Cor Atual: " + partida.JogadorAtual);
+        }
+
+        public static void ImprimirPecasCapturadas(PartidaDeXadrez partida) {
+
+            Console.WriteLine("Peças Capturadas: ");
+
+            Console.WriteLine("Brancas: " + ImprimirConjunto(partida.PecasCapturadas(Cor.Branca)));
+
+            ConsoleColor aux = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("Pretas: " + ImprimirConjunto(partida.PecasCapturadas(Cor.Preta)));
+            Console.ForegroundColor = aux;
+        }
+
+        public static StringBuilder ImprimirConjunto(HashSet<Peca> conjunto) {
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("[");
+
+            foreach(Peca x in conjunto) { 
+                
+                sb.Append(x + " ");
+            
+            }
+
+            sb.Append("]");
+
+            return sb;
 
         }
 
@@ -92,7 +135,7 @@ namespace Xadrez {
                 } else {
                     ConsoleColor aux = Console.ForegroundColor;
 
-                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
 
                     Console.Write(" " + peca);
 
