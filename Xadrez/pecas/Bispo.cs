@@ -25,8 +25,8 @@ namespace pecas {
                 if (Tabuleiro.Peca(pos) != null && Tabuleiro.Peca(pos).Cor != Cor) {
                     break;
                 }
-                pos.Linha -= 1;
-                pos.Coluna -= 1;
+                pos.DefinirValores(pos.Coluna - 1, pos.Linha - 1);
+
             }
 
             //Nordeste
@@ -36,8 +36,7 @@ namespace pecas {
                 if (Tabuleiro.Peca(pos) != null && Tabuleiro.Peca(pos).Cor != Cor) {
                     break;
                 }
-                pos.Linha -= 1;
-                pos.Coluna += 1;
+                pos.DefinirValores(pos.Coluna + 1, pos.Linha - 1);
             }
 
             //Sudoeste
@@ -47,19 +46,17 @@ namespace pecas {
                 if (Tabuleiro.Peca(pos) != null && Tabuleiro.Peca(pos).Cor != Cor) {
                     break;
                 }
-                pos.Linha += 1;
-                pos.Coluna -= 1;
+                pos.DefinirValores(pos.Coluna - 1, pos.Linha + 1);
             }
 
-            //Sudoeste
+            //Sudeste
             pos.DefinirValores(Posicao.Coluna + 1, Posicao.Linha + 1);
             while (Tabuleiro.PosicaoValida(pos) && PodeMover(pos)) {
                 mat[pos.Linha, pos.Coluna] = true;
                 if (Tabuleiro.Peca(pos) != null && Tabuleiro.Peca(pos).Cor != Cor) {
                     break;
                 }
-                pos.Linha += 1;
-                pos.Coluna += 1;
+                pos.DefinirValores(pos.Coluna + 1, pos.Linha + 1);
             }
 
             return mat;

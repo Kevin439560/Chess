@@ -18,16 +18,16 @@ namespace pecas {
 
             Posicao pos = new(0, 0);
 
-            
-            //acima esquerda acima
-            pos.DefinirValores(Posicao.Coluna - 1, Posicao.Linha - 2);
+
+            //acima esquerda abaixo
+            pos.DefinirValores(Posicao.Coluna - 2, Posicao.Linha - 1);
             if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos)) {
                 mat[pos.Linha, pos.Coluna] = true;
             }
 
-            //acima esquerda abaixo
-            pos.DefinirValores(Posicao.Coluna - 2, Posicao.Linha - 1);
-            if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos) ){
+            //acima esquerda acima
+            pos.DefinirValores(Posicao.Coluna - 1, Posicao.Linha - 2);
+            if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos)) {
                 mat[pos.Linha, pos.Coluna] = true;
             }
 
@@ -39,6 +39,19 @@ namespace pecas {
 
             //acima direita abaixo
             pos.DefinirValores(Posicao.Coluna + 2, Posicao.Linha - 1);
+            if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos)) {
+                mat[pos.Linha, pos.Coluna] = true;
+
+            }
+
+            //abaixo direita acima
+            pos.DefinirValores(Posicao.Coluna + 2, Posicao.Linha + 1);
+            if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos)) {
+                mat[pos.Linha, pos.Coluna] = true;
+            }
+
+            //abaixo direita abaixo
+            pos.DefinirValores(Posicao.Coluna + 1, Posicao.Linha + 2);
             if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos)) {
                 mat[pos.Linha, pos.Coluna] = true;
             }
@@ -55,18 +68,6 @@ namespace pecas {
                 mat[pos.Linha, pos.Coluna] = true;
             }
 
-            //abaixo direita acima
-            pos.DefinirValores(Posicao.Coluna + 2, Posicao.Linha + 1);
-            if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos)) {
-                mat[pos.Linha, pos.Coluna] = true;
-            }
-
-            //abaixo direita abaixo
-            pos.DefinirValores(Posicao.Coluna + 1, Posicao.Linha + 2);
-            if (Tabuleiro.PosicaoValida(pos) && PodeMover(pos)) {
-                mat[pos.Linha, pos.Coluna] = true;
-            }
-            mat[2, 2] = true;
             return mat;
         }
 

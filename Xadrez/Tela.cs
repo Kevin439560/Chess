@@ -37,13 +37,22 @@ namespace Xadrez {
 
             Console.WriteLine("\nTurno: " + partida.Turno);
 
-            Console.WriteLine("Cor Atual: " + partida.JogadorAtual);
+            if (!partida.Terminada) {
 
-            if (partida.xeque) {
+                Console.WriteLine("Cor Atual: " + partida.JogadorAtual);
 
-                Console.WriteLine("XEQUE!");
+                if (partida.xeque) {
+
+                    Console.WriteLine("XEQUE!");
+
+                }
+            } else {
+                Console.WriteLine("XEQUE-MATE!");
+
+                Console.WriteLine("Vencedor: " + partida.JogadorAtual);
 
             }
+
         }
 
         public static void ImprimirPecasCapturadas(PartidaDeXadrez partida) {
@@ -117,14 +126,24 @@ namespace Xadrez {
 
         public static Posicao LerPosicaoXadrez(string posicao) {
             posicao = posicao.ToLower();
+            PosicaoXadrez linha;
 
-            PosicaoXadrez linha = Enum.Parse<PosicaoXadrez>(posicao[0] + "");
+            try {
 
-            int coluna = int.Parse(posicao[1] + "");
+                linha = Enum.Parse<PosicaoXadrez>(posicao[0] + "");
 
-            Console.WriteLine(linha + "" + coluna);
+                int coluna = int.Parse(posicao[1] + "");
 
-            return new Posicao(coluna, (int)linha);
+                Console.WriteLine(linha + "" + coluna);
+
+                return new Posicao(coluna, (int)linha);
+
+            } catch(Exception e) {
+
+                throw new TabuleiroException("Posicao Inválida\n\n" + e.Message);
+
+            }
+            
 
         }
 
