@@ -54,6 +54,33 @@ namespace pecas {
                 capturadas.Add(pecaCapturada);
 
             }
+
+            //Jogada especial roque pequeno
+            if(p is Rei && destino.Coluna == origem.Coluna + 2) {
+
+                Posicao origemTorre = new Posicao(origem.Coluna + 3, origem.Linha);
+                Posicao destinoTorre = new Posicao(origem.Coluna + 1, origem.Linha);
+
+                Peca T = Tab.RemoverPeca(origemTorre);
+
+                T.ImcrementarQteMovi();
+
+                Tab.ColocarPeca(T, destinoTorre);
+            }
+
+            //Jogada especial roque grande
+            if (p is Rei && destino.Coluna == origem.Coluna - 2) {
+
+                Posicao origemTorre = new Posicao(origem.Coluna - 4, origem.Linha);
+
+                Posicao destinoTorre = new Posicao(origem.Coluna - 1, origem.Linha);
+
+                Peca T = Tab.RemoverPeca(origemTorre);
+
+                T.ImcrementarQteMovi();
+
+                Tab.ColocarPeca(T, destinoTorre);
+            }
             return pecaCapturada;
 
         }
@@ -72,6 +99,32 @@ namespace pecas {
             }
 
             Tab.ColocarPeca(p, origem);
+
+            //Desfaz Jogada especial roque pequeno
+            if (p is Rei && destino.Coluna == origem.Coluna + 2) {
+
+                Posicao origemTorre = new Posicao(origem.Coluna + 3, origem.Linha);
+                Posicao destinoTorre = new Posicao(origem.Coluna + 1, origem.Linha);
+
+                Peca T = Tab.RemoverPeca(destinoTorre);
+
+                T.DecrementarQteMovi();
+
+                Tab.ColocarPeca(T, origemTorre);
+            }
+
+            //Desfaz Jogada especial roque pequeno
+            if (p is Rei && destino.Coluna == origem.Coluna - 2) {
+
+                Posicao origemTorre = new Posicao(origem.Coluna - 4, origem.Linha);
+                Posicao destinoTorre = new Posicao(origem.Coluna - 1, origem.Linha);
+
+                Peca T = Tab.RemoverPeca(destinoTorre);
+
+                T.DecrementarQteMovi();
+
+                Tab.ColocarPeca(T, origemTorre);
+            }
         }
 
         public void RealizaJogada(Posicao origem, Posicao destino) {
@@ -317,19 +370,19 @@ namespace pecas {
             ColocarNovaPeca(0, 2, new Bispo(Cor.Preta, Tab));
             ColocarNovaPeca(0, 6, new Cavalo(Cor.Preta, Tab));
             ColocarNovaPeca(0, 5, new Bispo(Cor.Preta, Tab));
-            ColocarNovaPeca(0, 3, new Rei(Cor.Preta, Tab));
-            ColocarNovaPeca(0, 4, new Rainha(Cor.Preta, Tab));
+            ColocarNovaPeca(0, 4, new Rei(Cor.Preta, Tab, this));
+            ColocarNovaPeca(0, 3, new Rainha(Cor.Preta, Tab));
 
 
 
-
+            /*
             for (int i = 0; i < 8; i++) {
 
                 ColocarNovaPeca(1, i, new Peao(Cor.Preta, Tab));
                 ColocarNovaPeca(6, i, new Peao(Cor.Branca, Tab));
 
             }
-
+            */
 
 
             ColocarNovaPeca(7, 0, new Torre(Cor.Branca, Tab));
@@ -338,8 +391,8 @@ namespace pecas {
             ColocarNovaPeca(7, 5, new Bispo(Cor.Branca, Tab));
             ColocarNovaPeca(7, 1, new Cavalo(Cor.Branca, Tab));
             ColocarNovaPeca(7, 2, new Bispo(Cor.Branca, Tab));
-            ColocarNovaPeca(7, 3, new Rei(Cor.Branca, Tab));
-            ColocarNovaPeca(7, 4, new Rainha(Cor.Branca, Tab));
+            ColocarNovaPeca(7, 4, new Rei(Cor.Branca, Tab, this));
+            ColocarNovaPeca(7, 3, new Rainha(Cor.Branca, Tab));
 
 
 
